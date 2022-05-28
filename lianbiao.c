@@ -15,31 +15,32 @@ struct stud_node {
 	int score;
 	struct stud_node* next;
 };
-int main(void)
+int main()
 {
-	struct stud_node* head, * p;
-	int choice, num, score;
+	List head, p;
+	int num, score, choice;
 	char name[20];
 	int size = sizeof(struct stud_node);
 
+	head = NULL;
 	do {
-		printf("1: Create 2: Insert 3 : Delete 4 : Print 0: Exit \n");
+		printf("1: Create 2: Insert 3: Delete 4: Print 0: Exit \n");
 		scanf("%d", &choice);
 		switch (choice) {
 		case 1:
 			head = Create_Stu_Doc();
 			break;
 		case 2:
-			printf("Input num,name and score:\n");
+			printf("Input num,name and score:");
 			scanf("%d%s%d", &num, name, &score);
-			p = (struct stud_node*)malloc(size);
+			p = (List)malloc(size);
 			p->num = num;
 			strcpy(p->name, name);
 			p->score = score;
 			head = InsertDoc(head, p);
 			break;
 		case 3:
-			printf("Input num:\n");
+			printf("Input num:");
 			scanf("%d", &num);
 			head = DeleteDoc(head, num);
 			break;
